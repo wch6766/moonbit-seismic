@@ -19,7 +19,7 @@ repository = "https://github.com/Lyllyl789/moonbit-seismic"
 
 license = "Apache-2.0"
 
-keywords = ["seismology", "signal-processing", "sac", "miniseed", "filter"]
+keywords = [ "seismology", "signal-processing", "sac", "miniseed", "filter" ]
 
 preferred_target = "wasm-gc"
 

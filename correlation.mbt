@@ -1,4 +1,5 @@
-///| Result of a cross-correlation operation.
+///|
+/// Result of a cross-correlation operation.
 pub struct CorrelationResult {
   lags : Array[Int]
   coefficients : Array[Double]
@@ -7,12 +8,13 @@ pub struct CorrelationResult {
   max_time_offset : Double
 }
 
-///| Calculate standard cross-correlation between two signals.
+///|
+/// Calculate standard cross-correlation between two signals.
 /// Returns an array of correlation values for each lag from -N to +N, where N is max_lag.
 pub fn cross_correlate(
   signal : Array[Double],
   template : Array[Double],
-  max_lag : Int
+  max_lag : Int,
 ) -> CorrelationResult {
   let sig_len = signal.length()
   let temp_len = template.length()
@@ -25,14 +27,14 @@ pub fn cross_correlate(
       max_time_offset: 0.0,
     }
   }
-  
+
   let num_lags = 2 * max_lag + 1
   let lags = Array::new(capacity=num_lags)
   let coefficients = Array::new(capacity=num_lags)
-  
+
   let mut max_coeff = -2.0
   let mut best_lag = 0
-  
+
   // Calculate template stats once
   let mut temp_sum = 0.0
   let mut temp_sq_sum = 0.0
@@ -43,16 +45,16 @@ pub fn cross_correlate(
   let temp_mean = temp_sum / temp_len.to_double()
   let temp_variance = temp_sq_sum - temp_sum * temp_mean
   let temp_std = if temp_variance <= 0.0 { 0.0 } else { temp_variance.sqrt() }
-  
+
   for lag = -max_lag; lag <= max_lag; lag = lag + 1 {
     lags.push(lag)
-    
+
     // We compute the normalized cross-correlation (NCC) at this lag
     let mut dot_product = 0.0
     let mut sig_sum = 0.0
     let mut sig_sq_sum = 0.0
     let mut overlap_count = 0
-    
+
     for i = 0; i < temp_len; i = i + 1 {
       let sig_idx = i + lag
       if sig_idx >= 0 && sig_idx < sig_len {
@@ -64,14 +66,14 @@ pub fn cross_correlate(
         overlap_count = overlap_count + 1
       }
     }
-    
+
     let coeff = if overlap_count == 0 || temp_std == 0.0 {
       0.0
     } else {
       let sig_mean = sig_sum / overlap_count.to_double()
       let sig_variance = sig_sq_sum - sig_sum * sig_mean
       let sig_std = if sig_variance <= 0.0 { 0.0 } else { sig_variance.sqrt() }
-      
+
       if sig_std == 0.0 {
         0.0
       } else {
@@ -86,14 +88,14 @@ pub fn cross_correlate(
         cov / (sig_std * temp_std)
       }
     }
-    
+
     coefficients.push(coeff)
     if coeff > max_coeff {
       max_coeff = coeff
       best_lag = lag
     }
   }
-  
+
   {
     lags,
     coefficients,
@@ -103,15 +105,17 @@ pub fn cross_correlate(
   }
 }
 
-///| Slide a template trace across a main trace to compute sliding-window cross correlation.
+///|
+/// Slide a template trace across a main trace to compute sliding-window cross correlation.
 pub fn correlate_traces(trace : Trace, template : Trace) -> CorrelationResult {
   let max_lag = trace.npts() - 1
   let res = cross_correlate(trace.data, template.data, max_lag)
-  
+
   // Calculate exact time offset for the best lag
   let dt = trace.delta()
-  let max_time_offset = res.max_lag.to_double() * dt + (trace.start_time - template.start_time)
-  
+  let max_time_offset = res.max_lag.to_double() * dt +
+    (trace.start_time - template.start_time)
+
   {
     lags: res.lags,
     coefficients: res.coefficients,

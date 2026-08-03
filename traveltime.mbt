@@ -1,33 +1,45 @@
-///| Represents a single flat layer in a 1D velocity model.
+///|
+/// Represents a single flat layer in a 1D velocity model.
 pub struct Layer {
   depth : Double // depth to top of layer (km)
-  vp : Double    // P-wave velocity (km/s)
-  vs : Double    // S-wave velocity (km/s)
+  vp : Double // P-wave velocity (km/s)
+  vs : Double // S-wave velocity (km/s)
 }
 
-///| Create a new Layer.
+///|
+/// Create a new Layer.
 pub fn Layer::new(depth : Double, vp : Double, vs : Double) -> Layer {
   { depth, vp, vs }
 }
 
-///| Represents a 1D velocity model consisting of multiple layers.
+///|
+/// Represents a 1D velocity model consisting of multiple layers.
 pub struct VelocityModel {
   name : String
   layers : Array[Layer]
 }
 
-///| Create a new VelocityModel.
-pub fn VelocityModel::new(name : String, layers : Array[Layer]) -> VelocityModel {
+///|
+/// Create a new VelocityModel.
+pub fn VelocityModel::new(
+  name : String,
+  layers : Array[Layer],
+) -> VelocityModel {
   { name, layers }
 }
 
-///| Get the P or S wave velocity at a specific depth in the 1D model.
-pub fn get_velocity_at_depth(model : VelocityModel, depth : Double, is_s_wave : Bool) -> Double {
+///|
+/// Get the P or S wave velocity at a specific depth in the 1D model.
+pub fn get_velocity_at_depth(
+  model : VelocityModel,
+  depth : Double,
+  is_s_wave : Bool,
+) -> Double {
   let n = model.layers.length()
   if n == 0 {
     return 1.0 // safety fallback
   }
-  
+
   let mut active_layer = model.layers[0]
   for i = 1; i < n; i = i + 1 {
     if depth >= model.layers[i].depth {
@@ -36,7 +48,7 @@ pub fn get_velocity_at_depth(model : VelocityModel, depth : Double, is_s_wave : 
       break
     }
   }
-  
+
   if is_s_wave {
     active_layer.vs
   } else {
@@ -44,19 +56,20 @@ pub fn get_velocity_at_depth(model : VelocityModel, depth : Double, is_s_wave : 
   }
 }
 
-///| Estimate the travel time of P or S wave between a source and a station
+///|
+/// Estimate the travel time of P or S wave between a source and a station
 /// using a path-integral slowness approximation along the straight-line ray.
 pub fn travel_time(
   model : VelocityModel,
   source_depth : Double,
   distance : Double,
-  is_s_wave : Bool
+  is_s_wave : Bool,
 ) -> Double {
   let path_len = (distance * distance + source_depth * source_depth).sqrt()
   if path_len == 0.0 {
     return 0.0
   }
-  
+
   // Integrate slowness over 100 steps along the straight ray path
   let steps = 100
   let mut total_slowness = 0.0
@@ -67,12 +80,13 @@ pub fn travel_time(
     let vel = get_velocity_at_depth(model, z, is_s_wave)
     total_slowness = total_slowness + 1.0 / vel
   }
-  
+
   let avg_slowness = total_slowness / steps.to_double()
   path_len * avg_slowness
 }
 
-///| Construct the standard IASPEI91 global velocity model.
+///|
+/// Construct the standard IASPEI91 global velocity model.
 pub fn iaspei91() -> VelocityModel {
   let layers = [
     Layer::new(0.0, 5.8, 3.36),

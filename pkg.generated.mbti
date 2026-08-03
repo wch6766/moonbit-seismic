@@ -1,0 +1,113 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "lyllyl789/moonbit-seismic"
+
+// Values
+pub fn apply_biquad(Trace, Double, Double, Double, Double, Double) -> Unit
+
+pub fn apply_biquad_zero_phase(Trace, Double, Double, Double, Double, Double) -> Unit
+
+pub fn bandpass(Trace, Double, Double, Bool) -> Unit
+
+pub fn bandstop(Trace, Double, Double, Bool) -> Unit
+
+pub fn body_wave_magnitude(Double, Double, Double) -> Result[Double, String]
+
+pub fn classic_sta_lta(Array[Double], Int, Int) -> Array[Double]
+
+pub fn correlate_traces(Trace, Trace) -> CorrelationResult
+
+pub fn cross_correlate(Array[Double], Array[Double], Int) -> CorrelationResult
+
+pub fn get_velocity_at_depth(VelocityModel, Double, Bool) -> Double
+
+pub fn highpass(Trace, Double, Bool) -> Unit
+
+pub fn iaspei91() -> VelocityModel
+
+pub fn linear_interpolate(Array[Double], Array[Double], Double) -> Result[Double, String]
+
+pub fn local_magnitude(Double, Double) -> Result[Double, String]
+
+pub fn lowpass(Trace, Double, Bool) -> Unit
+
+pub fn moving_average(Trace, Int) -> Unit
+
+pub fn parse_miniseed_record(Bytes, Bool) -> Result[Trace, String]
+
+pub fn parse_sac(Bytes) -> Result[Trace, String]
+
+pub fn peak_amplitude(Trace) -> Double
+
+pub fn surface_wave_magnitude(Double, Double, Double) -> Result[Double, String]
+
+pub fn to_miniseed_bytes(Trace, Int, Bool) -> Bytes
+
+pub fn to_sac_bytes(Trace, Bool) -> Bytes
+
+pub fn travel_time(VelocityModel, Double, Double, Bool) -> Double
+
+pub fn trigger_onset(Array[Double], Double, Double, Double, Double) -> Array[Trigger]
+
+// Errors
+
+// Types and methods
+pub struct CorrelationResult {
+  lags : Array[Int]
+  coefficients : Array[Double]
+  max_coefficient : Double
+  max_lag : Int
+  max_time_offset : Double
+}
+
+pub struct CubicSpline {
+  x : Array[Double]
+  a : Array[Double]
+  b : Array[Double]
+  c : Array[Double]
+  d : Array[Double]
+}
+pub fn CubicSpline::evaluate(Self, Double) -> Double
+pub fn CubicSpline::new(Array[Double], Array[Double]) -> Result[Self, String]
+
+pub struct Layer {
+  depth : Double
+  vp : Double
+  vs : Double
+}
+pub fn Layer::new(Double, Double, Double) -> Self
+
+pub struct Trace {
+  station : String
+  channel : String
+  sampling_rate : Double
+  start_time : Double
+  data : Array[Double]
+}
+pub fn Trace::clone(Self) -> Self
+pub fn Trace::delta(Self) -> Double
+pub fn Trace::demean(Self) -> Unit
+pub fn Trace::detrend(Self) -> Unit
+pub fn Trace::duration(Self) -> Double
+pub fn Trace::mean(Self) -> Double
+pub fn Trace::new(String, String, Double, Double, Array[Double]) -> Self
+pub fn Trace::npts(Self) -> Int
+pub fn Trace::std(Self) -> Double
+pub fn Trace::times(Self) -> Array[Double]
+
+pub struct Trigger {
+  on_index : Int
+  off_index : Int
+  on_time : Double
+  off_time : Double
+}
+
+pub struct VelocityModel {
+  name : String
+  layers : Array[Layer]
+}
+pub fn VelocityModel::new(String, Array[Layer]) -> Self
+
+// Type aliases
+
+// Traits
+

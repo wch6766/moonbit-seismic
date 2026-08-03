@@ -1,5 +1,5 @@
 import {
-  "moonbitlang/core/math" @math,
+  "moonbitlang/core/math",
   "lyllyl789/moonbit-seismic" @seismic,
 }
 
