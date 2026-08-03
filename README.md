@@ -89,7 +89,7 @@ A MoonBit library for seismic wave signal processing, tailored for seismic physi
 
 ## 演示输出示例 (Demo Output)
 
-运行 `moon run cmd/main` 后，您将看到如下地震学数据处理流程的演示输出：
+运行 `moon run cmd/main` 后，您将看到如下地震学 data 处理流程的演示输出：
 
 ```text
 ==================================================
