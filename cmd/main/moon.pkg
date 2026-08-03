@@ -1,0 +1,8 @@
+import {
+  "moonbitlang/core/math" @math,
+  "lyllyl789/moonbit-seismic" @seismic,
+}
+
+options(
+  "is-main": true,
+)
