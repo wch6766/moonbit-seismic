@@ -1,56 +1,853 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "lyllyl789/moonbit-seismic"
+package "wch6766/moonbit-seismic"
 
 // Values
+pub fn absolute_area(Array[Double], Double) -> Double
+
+pub fn acceleration_to_displacement(Trace) -> Trace
+
+pub fn acceptance_workload() -> BenchmarkWorkload
+
+pub fn adaptive_threshold(Array[Double], Double) -> Double
+
+pub fn add_noise(Array[Double], Double, NoiseModel, Double, Double, Int) -> Unit
+
+pub fn add_synthetic_event(Array[Double], Double, SyntheticEvent) -> Unit
+
+pub fn add_traces(Trace, Trace) -> Result[Trace, String]
+
+pub fn agreement_ratio(Array[Double], Array[Double], Double) -> Double
+
+pub fn aic_characteristic(Array[Double], Int) -> Array[Double]
+
+pub fn align_to_reference(Trace, Trace, Int) -> Result[Trace, String]
+
+pub fn alpha_beta_smooth(Array[Double], Double, Double, Double) -> Array[Double]
+
+pub fn amplitude_envelope(Array[Double]) -> Array[Double]
+
+pub fn amplitude_histogram(Array[Double], Double, Double, Int) -> AmplitudeHistogram
+
+pub fn amplitude_spectrum(Array[Double]) -> Array[Double]
+
+pub fn analyze_and_report(Trace) -> Result[String, String]
+
+pub fn analyze_trace(Trace, ProcessingConfig) -> Result[ProcessingResult, String]
+
+pub fn analyze_trace_collection(Array[Trace], Int, Int) -> Result[BatchAnalysis, String]
+
+pub fn analyze_trace_windows(Trace, Int, Int, Double) -> BatchAnalysis
+
 pub fn apply_biquad(Trace, Double, Double, Double, Double, Double) -> Unit
 
 pub fn apply_biquad_zero_phase(Trace, Double, Double, Double, Double, Double) -> Unit
+
+pub fn apply_fir(Array[Double], FirFilter) -> Array[Double]
+
+pub fn apply_fir_zero_phase(Array[Double], FirFilter) -> Array[Double]
+
+pub fn apply_instrument_gain(Trace, InstrumentResponse, Double) -> Trace
+
+pub fn apply_window(Array[Double], Array[Double]) -> Unit
+
+pub fn arrival_residual(Array[Double], Array[Double]) -> Double
+
+pub fn assess_quality(Trace, Double, Double) -> QualityReport
+
+pub fn associate_station_triggers(Array[StationTrigger], Double) -> Array[NetworkEvent]
+
+pub fn autocorrelation(Array[Double], Int) -> Array[Double]
+
+pub fn azimuth_degrees(StationPosition, StationPosition) -> Double
+
+pub fn band_power(Spectrum, Double, Double) -> Double
+
+pub fn band_power_fraction(Spectrum, Double, Double) -> Double
 
 pub fn bandpass(Trace, Double, Double, Bool) -> Unit
 
 pub fn bandstop(Trace, Double, Double, Bool) -> Unit
 
+pub fn baseline_residual(Array[Double], Int) -> Array[Double]
+
+pub fn baseline_slope(Array[Double]) -> Double
+
+pub fn batch_analysis_text(BatchAnalysis) -> String
+
+pub fn benchmark_summary_text(BenchmarkSummary) -> String
+
+pub fn benchmark_trace(BenchmarkWorkload) -> Trace
+
+pub fn bias_correct(Trace, Trace) -> Trace
+
+pub fn blackman_window(Int) -> Array[Double]
+
 pub fn body_wave_magnitude(Double, Double, Double) -> Result[Double, String]
+
+pub fn bounded_correlation(Array[Double], Array[Double], Int, Double) -> CorrelationPeak
+
+pub fn build_workflow_report(Trace, ProcessingConfig) -> Result[WorkflowReport, String]
+
+pub fn calibrate_trace(Trace, InstrumentResponse, Double) -> Trace
+
+pub fn calibrate_with_curve(Trace, CalibrationCurve, Double) -> Trace
+
+pub fn catalog_from_network_events(Array[NetworkEvent], Double, Double, Double) -> EventCatalog
+
+pub fn chirp_wave(Int, Double, Double, Double, Double) -> Array[Double]
+
+pub fn clamp_samples(Array[Double], Double, Double) -> Unit
+
+pub fn clamp_trace(Trace, Double, Double) -> Trace
 
 pub fn classic_sta_lta(Array[Double], Int, Int) -> Array[Double]
 
+pub fn clean_seismic_trace(Trace, Double) -> Result[Trace, String]
+
+pub fn clipped_fraction(Array[Double], Double) -> Double
+
+pub fn clipping_segments(Array[Double], Double, Double) -> Array[SampleSegment]
+
+pub fn common_time_range(Trace, Trace) -> (Double, Double)?
+
+pub fn compare_traces(Trace, Trace, Int) -> Result[TraceComparison, String]
+
+pub fn comparison_csv(TraceComparison) -> String
+
+pub fn comparison_passes(TraceComparison, Double, Double) -> Bool
+
+pub fn complex_dft(Array[ComplexNumber]) -> Array[ComplexNumber]
+
+pub fn concatenate_traces(Trace, Trace) -> Result[Trace, String]
+
+pub fn consensus_picks(Trace, Double, Int) -> Array[ArrivalPick]
+
+pub fn constant_calibration(Double, WaveQuantity) -> CalibrationCurve
+
+pub fn continuous_wavelet_transform(Array[Double], Array[Double], WaveletFamily) -> Scalogram
+
+pub fn convolve_same(Array[Double], Array[Double]) -> Array[Double]
+
 pub fn correlate_traces(Trace, Trace) -> CorrelationResult
+
+pub fn correlation_peak(CorrelationResult, Double) -> CorrelationPeak
+
+pub fn cosine_taper(Array[Double], Double) -> Unit
+
+pub fn covariance_matrix(Array[Array[Double]]) -> Array[Array[Double]]
+
+pub fn covariance_samples(Array[Double], Array[Double]) -> Double
 
 pub fn cross_correlate(Array[Double], Array[Double], Int) -> CorrelationResult
 
+pub fn crossfade(Array[Double], Array[Double], Double) -> Array[Double]
+
+pub fn cumulative_integral(Array[Double], Double) -> Array[Double]
+
+pub fn cutoff_from_response(Array[FilterResponsePoint], Double) -> Double?
+
+pub fn decimate_samples(Array[Double], Int) -> Array[Double]
+
+pub fn decode_miniseed_rate(Int, Int) -> Double
+
+pub fn default_event_config(Double, Double) -> EventDetectionConfig
+
+pub fn default_lms_config() -> LmsConfig
+
+pub fn default_processing_config() -> ProcessingConfig
+
+pub fn describe_samples(Array[Double]) -> DescriptiveStats
+
+pub fn design_fir_bandpass(Double, Double, Double, Int, FirWindow) -> Result[FirFilter, String]
+
+pub fn design_fir_bandstop(Double, Double, Double, Int, FirWindow) -> Result[FirFilter, String]
+
+pub fn design_fir_highpass(Double, Double, Int, FirWindow) -> Result[FirFilter, String]
+
+pub fn design_fir_lowpass(Double, Double, Int, FirWindow) -> Result[FirFilter, String]
+
+pub fn detect_events(Array[Double], EventDetectionConfig) -> Array[EventCandidate]
+
+pub fn detect_sac_endian(Bytes) -> Result[SacEndian, String]
+
+pub fn deterministic_noise(Int, Double, Int) -> Array[Double]
+
+pub fn difference_characteristic(Array[Double]) -> Array[Double]
+
+pub fn difference_noise_rms(Array[Double]) -> Double
+
+pub fn difference_score(Array[Double], Array[Double]) -> Double
+
+pub fn differentiate_samples(Array[Double], Double) -> Array[Double]
+
+pub fn differentiate_trace(Trace) -> Trace
+
+pub fn displacement_to_velocity(Trace) -> Trace
+
+pub fn distance_from_phase_separation(VelocityModel, Double, Double, Double) -> Double
+
+pub fn dominant_frequency(Spectrum) -> Double
+
+pub fn dominant_frequency_of(Array[Double], Double) -> Double
+
+pub fn dominant_in_band(Spectrum, Double, Double) -> Bool
+
+pub fn dominant_wavelet_scale(Scalogram) -> Double
+
+pub fn duration_magnitude(Double, Double) -> Result[Double, String]
+
+pub fn empirical_threshold(Array[Double], Double) -> Double
+
+pub fn encode_miniseed_rate(Double) -> (Int, Int)
+
+pub fn energetic_windows(BatchAnalysis, Double) -> Array[WindowFeatureRow]
+
+pub fn energy_fraction(Array[Double], Int, Int) -> Double
+
+pub fn energy_ratio(Array[Double], Int, Int) -> Array[Double]
+
+pub fn envelope_trace(Trace) -> Trace
+
+pub fn estimate_duration(Double, Double) -> Result[MagnitudeEstimate, String]
+
+pub fn estimate_local(Double, Double, Double) -> Result[MagnitudeEstimate, String]
+
+pub fn estimate_moment(Double) -> Result[MagnitudeEstimate, String]
+
+pub fn estimate_period(Array[Double], Double) -> Double
+
+pub fn estimate_ray_parameter(VelocityModel, Double, Double, WavePhase) -> Double
+
+pub fn event_duration(EventCandidate) -> Double
+
+pub fn event_energy(Trace, Double, Double) -> Double
+
+pub fn event_windows(BatchAnalysis) -> Array[WindowFeatureRow]
+
+pub fn exceedance_ratio(Array[Double], Double) -> Double
+
+pub fn extract_spectral_features(Spectrum) -> SpectralFeatureSet
+
+pub fn extract_window(Array[Double], Int, Int, Double) -> Array[Double]
+
+pub fn features_from_samples(Array[Double], Double) -> SpectralFeatureSet
+
+pub fn filter_events_by_snr(Array[EventCandidate], Double) -> Array[EventCandidate]
+
+pub fn filter_trace_fir(Trace, FirFilter, Bool) -> Trace
+
+pub fn find_peaks(Array[Double], Double, Int) -> Array[SignalPeak]
+
+pub fn fir_blackman() -> FirWindow
+
+pub fn fir_hamming() -> FirWindow
+
+pub fn fir_hann() -> FirWindow
+
+pub fn fir_rectangular() -> FirWindow
+
+pub fn first_arrival_index(Array[Double], Double, Int) -> Int?
+
+pub fn flat_segments(Array[Double], Double, Double) -> Array[SampleSegment]
+
+pub fn fractional_index(Int, Double) -> Int
+
+pub fn frequency_bin(Spectrum, Double) -> Int
+
+pub fn gaussian_kernel(Int, Double) -> Array[Double]
+
+pub fn gaussian_smooth(Array[Double], Int, Double) -> Array[Double]
+
+pub fn generic_broadband_response() -> InstrumentResponse
+
+pub fn geometric_spreading(Double, Double) -> Double
+
 pub fn get_velocity_at_depth(VelocityModel, Double, Bool) -> Double
+
+pub fn grid_search_location(VelocityModel, Double, Double, Double, Double, Double, Int, Array[StationPosition], Array[Double]) -> LocationEstimate
+
+pub fn hamming_window(Int) -> Array[Double]
+
+pub fn hann_periodogram(Array[Double], Double) -> Spectrum
+
+pub fn hann_window(Int) -> Array[Double]
+
+pub fn harmonicity(Spectrum) -> Double
 
 pub fn highpass(Trace, Double, Bool) -> Unit
 
+pub fn histogram_probability(AmplitudeHistogram, Int) -> Double
+
+pub fn huber_smooth(Array[Double], Int, Double, Int) -> Array[Double]
+
 pub fn iaspei91() -> VelocityModel
+
+pub fn impulse_signal(Int, Int, Double, Int) -> Array[Double]
+
+pub fn instantaneous_frequency(Array[Double], Double) -> Array[Double]
+
+pub fn instantaneous_phase(Array[Double]) -> Array[Double]
+
+pub fn integrate_trace(Trace) -> Trace
+
+pub fn interpolate_spectral_amplitude(Spectrum, Double) -> Double
+
+pub fn invalid_sample_count(Array[Double]) -> Int
+
+pub fn inverse_complex_dft(Array[ComplexNumber]) -> Array[ComplexNumber]
+
+pub fn is_good_quality(QualityReport) -> Bool
+
+pub fn lag_one_autocorrelation(Array[Double]) -> Double
+
+pub fn lag_seconds(Int, Double) -> Double
+
+pub fn laplacian_smooth(Array[Double], Double) -> Array[Double]
 
 pub fn linear_interpolate(Array[Double], Array[Double], Double) -> Result[Double, String]
 
+pub fn lms_denoise(Array[Double], Array[Double], LmsConfig) -> Array[Double]
+
 pub fn local_magnitude(Double, Double) -> Result[Double, String]
+
+pub fn location_residual(VelocityModel, Double, Double, Double, Double, Array[StationPosition], Array[Double]) -> Double
+
+pub fn logarithmic_scales(Double, Double, Int) -> Array[Double]
 
 pub fn lowpass(Trace, Double, Bool) -> Unit
 
+pub fn lowpass_response(Double, Double, Array[Double]) -> Array[FilterResponsePoint]
+
+pub fn magnitude_from_trace(Trace, Double) -> Result[MagnitudeEstimate, String]
+
+pub fn magnitude_summary(MagnitudeEstimate) -> String
+
+pub fn maximum_difference(Array[Double], Array[Double]) -> Double
+
+pub fn maximum_model_velocity(VelocityModel, WavePhase) -> Double
+
+pub fn maximum_sample(Array[Double]) -> Double
+
+pub fn mean_samples(Array[Double]) -> Double
+
+pub fn measure_filter_response((Trace) -> Trace, Double, Array[Double], Int) -> Array[FilterResponsePoint]
+
+pub fn median_absolute_deviation(Array[Double]) -> Double
+
+pub fn median_filter(Array[Double], Int) -> Array[Double]
+
+pub fn median_lag(Array[CorrelationResult]) -> Int
+
+pub fn median_samples(Array[Double]) -> Double
+
+pub fn merge_triggers(Array[Trigger], Int) -> Array[Trigger]
+
+pub fn millimeters_to_micrometers(Double) -> Double
+
+pub fn minimum_model_velocity(VelocityModel, WavePhase) -> Double
+
+pub fn minimum_sample(Array[Double]) -> Double
+
+pub fn miniseed_clock_from_seconds(Double) -> (Int, Int, Int, Int, Int)
+
+pub fn miniseed_duration(Int, Double) -> Double
+
+pub fn miniseed_record_size(Int, Int) -> Int
+
+pub fn miniseed_samples(Bytes, Bool) -> Result[Array[Double], String]
+
+pub fn miniseed_seconds_from_year(Int, Int, Int, Int, Int) -> Double
+
+pub fn mix_signals(Array[Double], Array[Double], Double, Double) -> Array[Double]
+
+pub fn moment_magnitude(Double) -> Result[Double, String]
+
 pub fn moving_average(Trace, Int) -> Unit
+
+pub fn moving_mean_samples(Array[Double], Int) -> Array[Double]
+
+pub fn moving_rms_samples(Array[Double], Int) -> Array[Double]
+
+pub fn network_local_magnitude(Array[Trace], Double) -> Result[Double, String]
+
+pub fn noise_colored() -> NoiseModel
+
+pub fn noise_floor(Array[Double], Double) -> Double
+
+pub fn noise_none() -> NoiseModel
+
+pub fn noise_sinusoidal() -> NoiseModel
+
+pub fn noise_uniform() -> NoiseModel
+
+pub fn normalize_peak(Array[Double]) -> Array[Double]
+
+pub fn normalize_spectrum(Array[Double]) -> Array[Double]
+
+pub fn normalize_trace_peak(Trace) -> Trace
+
+pub fn normalize_trace_zscore(Trace) -> Trace
+
+pub fn normalize_zscore(Array[Double]) -> Array[Double]
+
+pub fn normalized_difference(Array[Double]) -> Array[Double]
+
+pub fn normalized_rmse(Array[Double], Array[Double]) -> Double
+
+pub fn pad_samples(Array[Double], Int, Int, Double) -> Array[Double]
+
+pub fn parse_ascii_samples(String) -> Result[Array[Double], String]
+
+pub fn parse_csv_samples(String, Bool) -> Result[Array[Double], String]
+
+pub fn parse_miniseed_header(Bytes) -> Result[MiniSeedHeader, String]
 
 pub fn parse_miniseed_record(Bytes, Bool) -> Result[Trace, String]
 
 pub fn parse_sac(Bytes) -> Result[Trace, String]
 
+pub fn parse_sac_header(Bytes) -> Result[SacHeaderInfo, String]
+
+pub fn parse_text_waveform(String) -> Result[TextWaveform, String]
+
+pub fn parse_time_amplitude_csv(String, String, String) -> Result[Trace, String]
+
+pub fn passband_ripple(Array[FilterResponsePoint], Double, Double) -> Double
+
 pub fn peak_amplitude(Trace) -> Double
 
+pub fn peak_to_peak_samples(Array[Double]) -> Double
+
+pub fn pearson_correlation(Array[Double], Array[Double]) -> Double
+
+pub fn periodogram(Array[Double], Double, Array[Double]) -> Spectrum
+
+pub fn phase_arrivals(VelocityModel, Double, Double) -> Array[TravelTimeSample]
+
+pub fn phase_at(Array[Double], Double, Int) -> PhaseMeasurement
+
+pub fn phase_coherence(Array[Double], Array[Double]) -> Double
+
+pub fn phase_separation(VelocityModel, Double, Double) -> Double
+
+pub fn pick_amplitude_arrival(Trace, Double, Int) -> ArrivalPick?
+
+pub fn pick_arrival(Trace, PickMethod, Double, Int) -> ArrivalPick?
+
+pub fn pick_by_aic() -> PickMethod
+
+pub fn pick_by_amplitude() -> PickMethod
+
+pub fn pick_by_energy_ratio() -> PickMethod
+
+pub fn pick_by_kurtosis() -> PickMethod
+
+pub fn pick_characteristic(Array[Double], Trace, Double, PickMethod) -> ArrivalPick?
+
+pub fn pick_phase(Trace, Double, Double) -> PhaseMeasurement?
+
+pub fn positive_area(Array[Double], Double) -> Double
+
+pub fn preprocess_trace(Trace, Bool, Bool, Double) -> Trace
+
+pub fn process_trace(Trace, ProcessingConfig) -> Result[Trace, String]
+
+pub fn processed_quality_score(Trace, ProcessingConfig) -> Result[Double, String]
+
+pub fn processing_status(ProcessingResult) -> String
+
+pub fn quantile_samples(Array[Double], Double) -> Double
+
+pub fn quantity_acceleration() -> WaveQuantity
+
+pub fn quantity_conversion(WaveQuantity, WaveQuantity, Double) -> Array[Double]
+
+pub fn quantity_counts() -> WaveQuantity
+
+pub fn quantity_displacement() -> WaveQuantity
+
+pub fn quantity_velocity() -> WaveQuantity
+
+pub fn quorum_events(Array[NetworkEvent], Int) -> Array[NetworkEvent]
+
+pub fn ray_path_points(Double, Double, Int) -> Array[(Double, Double)]
+
+pub fn real_dft(Array[Double]) -> Array[ComplexNumber]
+
+pub fn recursive_sta_lta(Array[Double], Int, Int) -> Array[Double]
+
+pub fn remove_initial_offset(Array[Double], Int) -> Array[Double]
+
+pub fn remove_polynomial_baseline(Array[Double], Double) -> Array[Double]
+
+pub fn repair_clipped_samples(Array[Double], Double) -> Array[Double]
+
+pub fn repair_spikes(Array[Double], Int, Double) -> Array[Double]
+
+pub fn repeated_smooth(Array[Double], Int, Int) -> Array[Double]
+
+pub fn report_artifact_label(WorkflowReport) -> String
+
+pub fn report_dominant_millihertz(WorkflowReport) -> Double
+
+pub fn report_duration_milliseconds(WorkflowReport) -> Double
+
+pub fn report_fingerprint(WorkflowReport) -> Int
+
+pub fn report_has_event(WorkflowReport) -> Bool
+
+pub fn report_has_samples(WorkflowReport) -> Bool
+
+pub fn report_passes(WorkflowReport) -> Bool
+
+pub fn report_quality_percent(WorkflowReport) -> Double
+
+pub fn report_roundtrip_count(WorkflowReport) -> Int
+
+pub fn report_roundtrips_pass(WorkflowReport) -> Bool
+
+pub fn report_sample_density(WorkflowReport) -> Double
+
+pub fn report_sample_reduction(WorkflowReport) -> Int
+
+pub fn report_timing_is_valid(WorkflowReport) -> Bool
+
+pub fn require_valid_trace(Trace, Double) -> Result[Unit, String]
+
+pub fn resample_linear(Array[Double], Double, Double) -> Array[Double]
+
+pub fn resample_trace(Trace, Double) -> Trace
+
+pub fn response_gain(InstrumentResponse, Double) -> Double
+
+pub fn ricker_wavelet(Int, Double, Double) -> Array[Double]
+
+pub fn rms_improvement(Double, Double) -> Double
+
+pub fn rms_samples(Array[Double]) -> Double
+
+pub fn robust_center_scale(Array[Double]) -> (Double, Double)
+
+pub fn robust_clip(Array[Double], Double) -> Array[Double]
+
+pub fn robust_standardize(Array[Double], Double) -> Array[Double]
+
+pub fn robust_threshold(Array[Double], Double) -> Double
+
+pub fn rolling_median(Array[Double], Int) -> Array[Double]
+
+pub fn run_benchmark_workload(BenchmarkWorkload, Int) -> BenchmarkSummary
+
+pub fn running_kurtosis(Array[Double], Int) -> Array[Double]
+
+pub fn sac_big_endian() -> SacEndian
+
+pub fn sac_delta(Bytes) -> Result[Double, String]
+
+pub fn sac_little_endian() -> SacEndian
+
+pub fn sac_record_size(Int) -> Int
+
+pub fn sac_samples(Bytes) -> Result[Array[Double], String]
+
+pub fn sac_summary(Bytes) -> Result[DescriptiveStats, String]
+
+pub fn sample_at_fraction(Array[Double], Double) -> Double
+
+pub fn sample_to_time(Trace, Int) -> Double
+
+pub fn sample_travel_time_curve(VelocityModel, Double, Double, Double, Int, WavePhase) -> TravelTimeCurve
+
+pub fn samples_to_ascii(Array[Double], String) -> String
+
+pub fn samples_to_csv(Array[Double], String) -> String
+
+pub fn scale_body() -> MagnitudeScale
+
+pub fn scale_duration() -> MagnitudeScale
+
+pub fn scale_local() -> MagnitudeScale
+
+pub fn scale_moment() -> MagnitudeScale
+
+pub fn scale_samples(Array[Double], Double, Double) -> Array[Double]
+
+pub fn scale_surface() -> MagnitudeScale
+
+pub fn scalogram_at(Scalogram, Int, Int) -> Double
+
+pub fn serialize_sac(Trace, SacEndian) -> Bytes
+
+pub fn shift_trace(Trace, Int) -> Trace
+
+pub fn signal_energy(Array[Double]) -> Double
+
+pub fn signal_to_noise_db(Array[Double]) -> Double
+
+pub fn similarity_score(Double) -> Double
+
+pub fn sine_wave(Int, Double, Double, Double, Double) -> Array[Double]
+
+pub fn slice_samples(Array[Double], Int, Int) -> Array[Double]
+
+pub fn sliding_template_match(Array[Double], Array[Double], Int) -> Array[CorrelationPeak]
+
+pub fn spectral_centroid(Spectrum) -> Double
+
+pub fn spectral_entropy(Spectrum) -> Double
+
+pub fn spectral_flatness(Spectrum) -> Double
+
+pub fn spectral_flux(Array[Double], Array[Double]) -> Double
+
+pub fn spectral_peaks(Spectrum, Double) -> Array[(Double, Double)]
+
+pub fn spectral_rolloff(Spectrum, Double) -> Double
+
+pub fn spectral_spread(Spectrum) -> Double
+
+pub fn split_windows(Array[Double], Int, Int, Bool, Double) -> Array[Array[Double]]
+
+pub fn stack_coherence(Trace, Array[Trace]) -> Double
+
+pub fn stack_traces(Array[Trace]) -> Result[Trace, String]
+
+pub fn stage_gain(ResponseStage, Double) -> Double
+
+pub fn standard_deviation(Array[Double]) -> Double
+
+pub fn station_triggers(String, Trace, EventDetectionConfig) -> Array[StationTrigger]
+
+pub fn step_signal(Int, Int, Double, Double) -> Array[Double]
+
+pub fn strongest_event(Array[EventCandidate]) -> EventCandidate?
+
+pub fn strongest_network_event(Array[NetworkEvent]) -> NetworkEvent?
+
+pub fn strongest_processed_event(ProcessingResult) -> EventCandidate?
+
+pub fn strongest_wavelet_coefficient(Scalogram) -> WaveletCoefficient
+
+pub fn strongest_window(BatchAnalysis) -> WindowFeatureRow?
+
+pub fn subtract_traces(Trace, Trace) -> Result[Trace, String]
+
+pub fn sum_samples(Array[Double]) -> Double
+
+pub fn summarize_trace(Trace) -> TraceSummary
+
+pub fn surface_distance_km(StationPosition, StationPosition) -> Double
+
 pub fn surface_wave_magnitude(Double, Double, Double) -> Result[Double, String]
+
+pub fn synthetic_event_envelope(Int, Int, Double) -> Array[Double]
+
+pub fn synthetic_trace(String, String, Int, Double, SyntheticEvent, Double) -> Trace
+
+pub fn tapered_sine(Int, Double, Double, Double, Double) -> Array[Double]
+
+pub fn text_waveform_to_string(TextWaveform) -> String
+
+pub fn text_waveform_to_trace(TextWaveform) -> Trace
+
+pub fn threshold_denoise(Array[Double], Double) -> Array[Double]
+
+pub fn threshold_duration(Array[Double], Double, Double) -> Double
+
+pub fn time_to_sample(Trace, Double) -> Int
 
 pub fn to_miniseed_bytes(Trace, Int, Bool) -> Bytes
 
 pub fn to_sac_bytes(Trace, Bool) -> Bytes
 
+pub fn trace_is_well_formed(Trace) -> Bool
+
+pub fn trace_slice(Trace, Int, Int) -> Trace
+
+pub fn trace_snr_db(Trace, Double, Double, Double, Double) -> Double
+
+pub fn trace_to_csv(Trace) -> String
+
+pub fn trace_to_text_waveform(Trace) -> TextWaveform
+
+pub fn trace_windows(Trace, Int, Int, Bool) -> Array[SampleWindow]
+
+pub fn trace_with_data(Trace, Array[Double]) -> Trace
+
 pub fn travel_time(VelocityModel, Double, Double, Bool) -> Double
 
+pub fn travel_time_phase(VelocityModel, Double, Double, WavePhase) -> Double
+
+pub fn travel_time_steps(VelocityModel, Double, Double, WavePhase, Int) -> Double
+
+pub fn triangular_weights(Int) -> Array[Double]
+
 pub fn trigger_onset(Array[Double], Double, Double, Double, Double) -> Array[Trigger]
+
+pub fn unwrap_phase(Array[Double]) -> Array[Double]
+
+pub fn validate_miniseed_record(Bytes) -> Result[MiniSeedHeader, String]
+
+pub fn validate_miniseed_roundtrip_size(Trace) -> Bool
+
+pub fn validate_model_for_depth(VelocityModel, Double) -> Array[ValidationFinding]
+
+pub fn validate_response(InstrumentResponse) -> Result[Unit, String]
+
+pub fn validate_sac_record(Bytes) -> Result[Unit, String]
+
+pub fn validate_sac_roundtrip_size(Trace) -> Bool
+
+pub fn validate_samples(Array[Double], Double, Double) -> Array[ValidationFinding]
+
+pub fn validate_trace(Trace) -> Result[Unit, String]
+
+pub fn validate_trace_findings(Trace, Double) -> Array[ValidationFinding]
+
+pub fn validate_velocity_model(VelocityModel) -> Result[Unit, String]
+
+pub fn validation_error_count(Array[ValidationFinding]) -> Int
+
+pub fn validation_findings_text(Array[ValidationFinding]) -> String
+
+pub fn validation_passes(Array[ValidationFinding]) -> Bool
+
+pub fn validation_warning_count(Array[ValidationFinding]) -> Int
+
+pub fn variance_samples(Array[Double]) -> Double
+
+pub fn velocity_depth_range(VelocityModel) -> (Double, Double)?
+
+pub fn velocity_to_displacement(Trace) -> Trace
+
+pub fn vertical_travel_time(VelocityModel, Double, WavePhase) -> Double
+
+pub fn wave_phase_p() -> WavePhase
+
+pub fn wave_phase_s() -> WavePhase
+
+pub fn wavelet_denoise(Array[Double], Array[Double], WaveletFamily, Double) -> Array[Double]
+
+pub fn wavelet_gaussian_derivative() -> WaveletFamily
+
+pub fn wavelet_morlet() -> WaveletFamily
+
+pub fn wavelet_ricker() -> WaveletFamily
+
+pub fn wavelet_scale_energy(Scalogram) -> Array[Double]
+
+pub fn weighted_average(Array[Double], Array[Double]) -> Double
+
+pub fn weighted_dot(Array[Double], Array[Double]) -> Double
+
+pub fn weighted_mse(Array[Double], Array[Double]) -> Double
+
+pub fn whiten_for_correlation(Array[Double]) -> Array[Double]
+
+pub fn whiteness_statistic(Array[Double], Int) -> Double
+
+pub fn window_count(Int, Int, Int, Bool) -> Int
+
+pub fn window_priority(WindowFeatureRow) -> Double
+
+pub fn wood_anderson_peak(Trace) -> Double
+
+pub fn wood_anderson_response(Trace) -> Trace
+
+pub fn workflow_report_line(WorkflowReport) -> String
+
+pub fn workflow_report_text(WorkflowReport) -> String
+
+pub fn workflow_status(WorkflowReport) -> String
+
+pub fn wrap_phase(Double) -> Double
+
+pub fn zero_crossing_count(Array[Double]) -> Int
+
+pub fn zero_crossing_indices(Array[Double]) -> Array[Int]
 
 // Errors
 
 // Types and methods
+pub struct AmplitudeHistogram {
+  lower : Double
+  upper : Double
+  counts : Array[Int]
+  total : Int
+}
+
+pub struct ArrivalPick {
+  index : Int
+  time : Double
+  strategy : PickMethod
+  confidence : Double
+  characteristic_value : Double
+}
+
+pub struct BatchAnalysis {
+  rows : Array[WindowFeatureRow]
+  total_windows : Int
+  accepted_windows : Int
+  mean_quality : Double
+  strongest_peak : Double
+}
+
+pub struct BenchmarkSummary {
+  workload : String
+  iterations : Int
+  samples_processed : Int
+  events_found : Int
+  checksum : Double
+  dominant_frequency : Double
+}
+
+pub struct BenchmarkWorkload {
+  name : String
+  sample_count : Int
+  sample_rate : Double
+  event_count : Int
+  noise_amplitude : Double
+}
+pub fn BenchmarkWorkload::new(String, Int, Double, Int, Double) -> Self
+
+pub struct CalibrationCurve {
+  frequencies : Array[Double]
+  sensitivities : Array[Double]
+  unit : WaveQuantity
+}
+pub fn CalibrationCurve::new(Array[Double], Array[Double], WaveQuantity) -> Result[Self, String]
+pub fn CalibrationCurve::sensitivity(Self, Double) -> Double
+
+pub struct CatalogEntry {
+  id : Int
+  origin_time : Double
+  latitude : Double
+  longitude : Double
+  depth_km : Double
+  magnitude : Double
+  station_count : Int
+  confidence : Double
+}
+
+pub struct ComplexNumber {
+  real : Double
+  imaginary : Double
+}
+pub fn ComplexNumber::add(Self, Self) -> Self
+pub fn ComplexNumber::conjugate(Self) -> Self
+pub fn ComplexNumber::magnitude(Self) -> Double
+pub fn ComplexNumber::magnitude_squared(Self) -> Double
+pub fn ComplexNumber::mul(Self, Self) -> Self
+pub fn ComplexNumber::new(Double, Double) -> Self
+pub fn ComplexNumber::phase(Self) -> Double
+
+pub struct CorrelationPeak {
+  lag : Int
+  coefficient : Double
+  time_offset : Double
+  sharpness : Double
+}
+
 pub struct CorrelationResult {
   lags : Array[Int]
   coefficients : Array[Double]
@@ -69,12 +866,369 @@ pub struct CubicSpline {
 pub fn CubicSpline::evaluate(Self, Double) -> Double
 pub fn CubicSpline::new(Array[Double], Array[Double]) -> Result[Self, String]
 
+pub struct DescriptiveStats {
+  count : Int
+  minimum : Double
+  maximum : Double
+  mean : Double
+  variance : Double
+  standard_deviation : Double
+  rms : Double
+  energy : Double
+  median : Double
+  lower_quartile : Double
+  upper_quartile : Double
+  peak_to_peak : Double
+  zero_crossings : Int
+}
+
+pub struct EventCandidate {
+  on_index : Int
+  off_index : Int
+  peak_index : Int
+  on_time : Double
+  off_time : Double
+  peak_time : Double
+  peak_ratio : Double
+  energy : Double
+  signal_to_noise : Double
+}
+
+pub struct EventCatalog {
+  entries : Array[CatalogEntry]
+}
+pub fn EventCatalog::above_magnitude(Self, Double) -> Array[CatalogEntry]
+pub fn EventCatalog::add(Self, Double, Double, Double, Double, Double, Int, Double) -> Int
+pub fn EventCatalog::between(Self, Double, Double) -> Array[CatalogEntry]
+pub fn EventCatalog::mean_magnitude(Self) -> Double
+pub fn EventCatalog::new() -> Self
+pub fn EventCatalog::to_csv(Self) -> String
+
+pub struct EventDetectionConfig {
+  sta_samples : Int
+  lta_samples : Int
+  onset_threshold : Double
+  offset_threshold : Double
+  minimum_samples : Int
+  merge_gap_samples : Int
+  dt : Double
+  start_time : Double
+}
+
+pub struct FilterResponsePoint {
+  frequency : Double
+  input_rms : Double
+  output_rms : Double
+  gain : Double
+  gain_db : Double
+}
+
+pub struct FirFilter {
+  coefficients : Array[Double]
+  sample_rate : Double
+  low_cut : Double
+  high_cut : Double
+  group_delay : Double
+  window : FirWindow
+}
+
+pub enum FirWindow {
+  Rectangular
+  Hann
+  Hamming
+  Blackman
+}
+
+pub struct InstrumentResponse {
+  name : String
+  input_quantity : WaveQuantity
+  output_quantity : WaveQuantity
+  sensitivity : Double
+  reference_frequency : Double
+  stages : Array[ResponseStage]
+}
+pub fn InstrumentResponse::new(String, WaveQuantity, WaveQuantity, Double, Double, Array[ResponseStage]) -> Self
+
 pub struct Layer {
   depth : Double
   vp : Double
   vs : Double
 }
 pub fn Layer::new(Double, Double, Double) -> Self
+
+pub struct LmsConfig {
+  step_size : Double
+  filter_length : Int
+  leakage : Double
+}
+
+pub struct LocationEstimate {
+  latitude : Double
+  longitude : Double
+  depth_km : Double
+  origin_time : Double
+  residual : Double
+}
+
+pub struct MagnitudeEstimate {
+  scale : MagnitudeScale
+  value : Double
+  amplitude : Double
+  distance : Double
+  uncertainty : Double
+}
+
+pub enum MagnitudeScale {
+  LocalMagnitude
+  BodyWaveMagnitude
+  SurfaceWaveMagnitude
+  DurationMagnitude
+  MomentMagnitude
+}
+
+pub struct MiniSeedHeader {
+  sequence : String
+  station : String
+  location : String
+  channel : String
+  network : String
+  year : Int
+  julian_day : Int
+  hour : Int
+  minute : Int
+  second : Int
+  fractional_seconds : Int
+  sample_count : Int
+  sample_rate : Double
+  data_offset : Int
+}
+
+pub struct NetworkEvent {
+  origin_time : Double
+  station_count : Int
+  duration : Double
+  magnitude : Double
+  stations : Array[String]
+  confidence : Double
+}
+
+pub enum NoiseModel {
+  NoNoise
+  UniformNoise
+  SinusoidalNoise
+  ColoredNoise
+}
+
+pub struct PhaseMeasurement {
+  sample_index : Int
+  time : Double
+  amplitude : Double
+  phase : Double
+  frequency : Double
+  confidence : Double
+}
+
+pub enum PickMethod {
+  AmplitudeThreshold
+  EnergyRatio
+  AkaikeInformationCriterion
+  KurtosisChange
+}
+
+pub struct ProcessingConfig {
+  remove_mean : Bool
+  remove_trend : Bool
+  taper_fraction : Double
+  lowpass_frequency : Double?
+  highpass_frequency : Double?
+  fir_cutoff : Double?
+  fir_taps : Int
+  resample_rate : Double?
+  zero_phase : Bool
+  quality_clip_limit : Double
+  quality_flat_tolerance : Double
+}
+
+pub struct ProcessingResult {
+  original : TraceSummary
+  processed : Trace
+  quality : QualityReport
+  dominant_frequency : Double
+  events : Array[EventCandidate]
+}
+
+pub enum QualityFlag {
+  EmptyTrace
+  InvalidSampleRate
+  TooShort
+  Flatline
+  Clipped
+  BaselineDrift
+  LowSignalToNoise
+  ExcessiveGaps
+}
+
+pub struct QualityReport {
+  score : Double
+  flags : Array[QualityFlag]
+  sample_count : Int
+  peak_amplitude : Double
+  rms_amplitude : Double
+  noise_rms : Double
+  signal_to_noise : Double
+  clipped_fraction : Double
+  baseline_slope : Double
+  flat_fraction : Double
+}
+
+pub struct ResponseStage {
+  gain : Double
+  poles : Array[Double]
+  zeros : Array[Double]
+  corner_frequency : Double
+}
+pub fn ResponseStage::new(Double, Array[Double], Array[Double], Double) -> Self
+
+pub struct RollingAccumulator {
+  mut count : Int
+  mut mean : Double
+  mut m2 : Double
+}
+pub fn RollingAccumulator::count(Self) -> Int
+pub fn RollingAccumulator::mean(Self) -> Double
+pub fn RollingAccumulator::new() -> Self
+pub fn RollingAccumulator::push(Self, Double) -> Unit
+pub fn RollingAccumulator::reset(Self) -> Unit
+pub fn RollingAccumulator::standard_deviation(Self) -> Double
+pub fn RollingAccumulator::variance(Self) -> Double
+
+pub enum SacEndian {
+  SacLittleEndian
+  SacBigEndian
+}
+
+pub struct SacHeaderInfo {
+  endian : SacEndian
+  version : Int
+  sample_count : Int
+  delta : Double
+  begin : Double
+  station : String
+  channel : String
+  header_size : Int
+}
+
+pub struct SampleRing {
+  capacity : Int
+  values : Array[Double]
+}
+pub fn SampleRing::is_full(Self) -> Bool
+pub fn SampleRing::new(Int) -> Self
+pub fn SampleRing::push(Self, Double) -> Unit
+pub fn SampleRing::snapshot(Self) -> Array[Double]
+
+pub struct SampleSegment {
+  start_index : Int
+  end_index : Int
+  duration : Double
+}
+
+pub struct SampleWindow {
+  start_index : Int
+  end_index : Int
+  start_time : Double
+  end_time : Double
+  data : Array[Double]
+}
+
+pub struct Scalogram {
+  scales : Array[Double]
+  sample_count : Int
+  coefficients : Array[Double]
+  family : WaveletFamily
+}
+
+pub struct SignalPeak {
+  index : Int
+  amplitude : Double
+  prominence : Double
+  width_samples : Int
+}
+
+pub struct SpectralFeatureSet {
+  dominant_frequency : Double
+  centroid : Double
+  spread : Double
+  entropy : Double
+  rolloff_85 : Double
+  low_band_power : Double
+  mid_band_power : Double
+  high_band_power : Double
+  spectral_flatness : Double
+}
+
+pub struct Spectrum {
+  frequencies : Array[Double]
+  amplitudes : Array[Double]
+  powers : Array[Double]
+  phases : Array[Double]
+  sample_rate : Double
+  input_length : Int
+}
+
+pub struct StationPosition {
+  station : String
+  latitude : Double
+  longitude : Double
+  elevation_km : Double
+}
+pub fn StationPosition::new(String, Double, Double, Double) -> Self
+
+pub struct StationTrigger {
+  station : String
+  trigger : Trigger
+  peak_amplitude : Double
+  quality_score : Double
+}
+
+pub struct StreamingQualityMonitor {
+  batch_size : Int
+  mut batch : Array[Double]
+  reports : Array[QualityReport]
+}
+pub fn StreamingQualityMonitor::new(Int) -> Self
+pub fn StreamingQualityMonitor::push(Self, Double, Double) -> QualityReport?
+pub fn StreamingQualityMonitor::reports(Self) -> Array[QualityReport]
+
+pub struct StreamingStaLta {
+  sta_samples : Int
+  lta_samples : Int
+  sta_buffer : Array[Double]
+  lta_buffer : Array[Double]
+  mut sta_sum : Double
+  mut lta_sum : Double
+}
+pub fn StreamingStaLta::new(Int, Int) -> Self
+pub fn StreamingStaLta::push(Self, Double) -> Double
+pub fn StreamingStaLta::reset(Self) -> Unit
+
+pub struct SyntheticEvent {
+  onset_sample : Int
+  amplitude : Double
+  dominant_frequency : Double
+  duration_samples : Int
+  phase : Double
+}
+pub fn SyntheticEvent::new(Int, Double, Double, Int, Double) -> Self
+
+pub struct TextWaveform {
+  station : String
+  channel : String
+  sample_rate : Double
+  start_time : Double
+  data : Array[Double]
+}
+pub fn TextWaveform::new(String, String, Double, Double, Array[Double]) -> Self
 
 pub struct Trace {
   station : String
@@ -94,11 +1248,54 @@ pub fn Trace::npts(Self) -> Int
 pub fn Trace::std(Self) -> Double
 pub fn Trace::times(Self) -> Array[Double]
 
+pub struct TraceComparison {
+  sample_count : Int
+  mean_error : Double
+  rms_error : Double
+  maximum_error : Double
+  correlation : Double
+  lag : Int
+}
+
+pub struct TraceSummary {
+  station : String
+  channel : String
+  sample_count : Int
+  sample_rate : Double
+  start_time : Double
+  end_time : Double
+  duration : Double
+  mean : Double
+  standard_deviation : Double
+  peak : Double
+}
+
+pub struct TravelTimeCurve {
+  samples : Array[TravelTimeSample]
+  phase : WavePhase
+  minimum_time : Double
+  maximum_time : Double
+}
+
+pub struct TravelTimeSample {
+  distance : Double
+  source_depth : Double
+  time : Double
+  phase : WavePhase
+}
+
 pub struct Trigger {
   on_index : Int
   off_index : Int
   on_time : Double
   off_time : Double
+}
+
+pub struct ValidationFinding {
+  code : String
+  severity : Int
+  message : String
+  sample_index : Int?
 }
 
 pub struct VelocityModel {
@@ -107,7 +1304,57 @@ pub struct VelocityModel {
 }
 pub fn VelocityModel::new(String, Array[Layer]) -> Self
 
+pub enum WavePhase {
+  PWave
+  SWave
+}
+
+pub enum WaveQuantity {
+  Counts
+  Displacement
+  Velocity
+  Acceleration
+}
+
+pub struct WaveletCoefficient {
+  sample_index : Int
+  scale : Double
+  value : Double
+  magnitude : Double
+}
+
+pub enum WaveletFamily {
+  RickerWavelet
+  MorletWavelet
+  GaussianDerivative
+}
+
+pub struct WindowFeatureRow {
+  start_time : Double
+  end_time : Double
+  rms : Double
+  peak : Double
+  dominant_frequency : Double
+  spectral_entropy : Double
+  quality_score : Double
+  event_count : Int
+}
+
+pub struct WorkflowReport {
+  station : String
+  channel : String
+  source_samples : Int
+  processed_samples : Int
+  source_duration : Double
+  processed_duration : Double
+  quality_score : Double
+  dominant_frequency : Double
+  event_count : Int
+  peak_amplitude : Double
+  roundtrip_sac : Bool
+  roundtrip_miniseed : Bool
+}
+
 // Type aliases
 
 // Traits
-

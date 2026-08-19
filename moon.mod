@@ -9,13 +9,13 @@
 //   "moonbitlang/x@0.4.6",
 // }
 
-name = "lyllyl789/moonbit-seismic"
+name = "wch6766/moonbit-seismic"
 
 version = "0.1.0"
 
 readme = "README.mbt.md"
 
-repository = "https://github.com/Lyllyl789/moonbit-seismic"
+repository = "https://github.com/wch6766/moonbit-seismic"
 
 license = "Apache-2.0"
 

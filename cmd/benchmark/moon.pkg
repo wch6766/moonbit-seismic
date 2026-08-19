@@ -1,5 +1,4 @@
 import {
-  "moonbitlang/core/math",
   "wch6766/moonbit-seismic" @seismic,
 }
 
